@@ -6,7 +6,6 @@ Created on Fri Jun 28 16:31:38 2024
 """
 
 import sys
-import pandas as pd
 
 from pyspark.sql import SparkSession
 
@@ -38,8 +37,8 @@ teenagers = spark.sql("SELECT name FROM people WHERE age >= 13 AND age <= 19")
 teenagersLocalDF = teenagers.collect()
 
 # Print the teenagers in our dataset
-dfpd = pd.DataFrame(teenagersLocalDF)
-print(dfpd)
+for i in teenagersLocalDF:
+    print(i)
 
 # Stop the SparkSession now
 spark.stop()
